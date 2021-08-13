@@ -3,11 +3,14 @@ package com.kaikeyun.android_demo;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import com.kaikeyun.sdk.KKSDK;
 
 import org.json.JSONObject;
+
+import java.io.IOException;
 
 import okhttp3.Call;
 import okhttp3.Callback;

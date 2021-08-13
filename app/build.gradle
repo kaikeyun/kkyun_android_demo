@@ -4,12 +4,18 @@ android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
     defaultConfig {
         applicationId "com.kaikeyun.android_demo"
         minSdkVersion 16
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -20,13 +26,34 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    packagingOptions {
+        pickFirst 'lib/x86/libc++_shared.so'
+        pickFirst 'lib/x86_64/libjsc.so'
+        pickFirst 'lib/x86_64/libc++_shared.so'
+        pickFirst 'lib/arm64-v8a/libjsc.so'
+        pickFirst 'lib/arm64-v8a/libc++_shared.so'
+        pickFirst 'lib/armeabi-v7a/libc++_shared.so'
+    }
 }
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation "com.facebook.react:react-native:0.59.10"
     implementation 'com.squareup.okhttp3:okhttp:3.10.0'
+    implementation 'androidx.multidex:multidex:2.0.0'
+
+    implementation 'com.github.barteksc:android-pdf-viewer:3.2.0-beta.1'
+    implementation "com.google.android.gms:play-services-gcm:16.1.0"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.4.20"
+    implementation 'me.relex:photodraweeview:1.0.0'
+    implementation "com.github.bumptech.glide:glide:4.9.0"
+    implementation 'com.github.LuckSiege.PictureSelector:picture_library:v2.2.8'
+    implementation 'com.airbnb.android:lottie:2.7.0'
+
+    compile(name: 'kkyun_sdk-1.0.0', ext: 'aar')
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
