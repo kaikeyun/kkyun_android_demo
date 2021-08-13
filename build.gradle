@@ -16,9 +16,6 @@ allprojects {
     repositories {
         google()
         jcenter()
-        flatDir {
-            dirs 'libs'   // aar目录
-        }
         maven {
             url "http://maven.kaikeyun.com"
         }
